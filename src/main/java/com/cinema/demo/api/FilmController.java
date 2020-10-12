@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.UUID;
@@ -38,9 +37,6 @@ public class FilmController {
 
     @DeleteMapping("{filmId}")
     public ResponseEntity<Void> deleteFilm(@PathVariable(value = "filmId") UUID id) {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete("http://localhost:8082/seance/delete-by-film/" + id.toString());
-
         filmsService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
