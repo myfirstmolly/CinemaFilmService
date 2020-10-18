@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: films
+  name: cinema-films
 spec:
-  type: ClusterIP
+  type: LoadBalancer
+
   ports:
     - port: 8081
   selector:
-    app: films
+    app: cinema-films

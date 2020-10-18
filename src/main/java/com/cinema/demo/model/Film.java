@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.UUID;
 
 @EnableAutoConfiguration
@@ -25,17 +27,12 @@ public final class Film {
     private Integer year;
     private String genre;
 
-    @Enumerated(EnumType.STRING)
-    private Rating rating;
-
-    public Film(String name, String director, Integer year, String genre,
-                Rating rating) {
+    public Film(String name, String director, Integer year, String genre) {
         filmId = UUID.randomUUID();
         this.name = name;
         this.director = director;
         this.year = year;
         this.genre = genre;
-        this.rating = rating;
     }
 
 }
