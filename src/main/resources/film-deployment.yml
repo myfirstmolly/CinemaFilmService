@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: films
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: films
+  template:
+    metadata:
+      labels:
+        app: films
+    spec:
+      containers:
+        -
+          image: myfirstmolly/filmservice
+          name: films
+          imagePullPolicy: Never
+          ports:
+            -
+              containerPort: 8081
+              name: films
+          env:
+            - name: POSTGRES_ENDPOINT
+              value: "jdbc:postgresql://192.168.0.91:5432/"
+            - name: POSTGRES_PASSWORD
+              value: "password"
+            - name: POSTGRES_USERNAME
+              value: "postgres"
+            - name: FILM_URL
+              value: "http://cinema-film"
