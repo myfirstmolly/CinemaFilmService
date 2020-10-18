@@ -23,7 +23,7 @@ spec:
               name: films
           env:
             - name: POSTGRES_ENDPOINT
-              value: "jdbc:postgresql://192.168.0.91:5432/"
+              value: "jdbc:postgresql://192.168.0.101:5432/"
             - name: POSTGRES_PASSWORD
               value: "password"
             - name: POSTGRES_USERNAME
