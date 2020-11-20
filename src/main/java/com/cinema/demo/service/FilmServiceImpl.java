@@ -33,7 +33,7 @@ public final class FilmServiceImpl implements FilmService {
     @Override
     public void deleteById(UUID id) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete("http://10.108.133.183:8082/seance/delete-by-film/" + id.toString());
+        restTemplate.delete("http://cinema-seances/seance/delete-by-film/" + id.toString());
         filmRepository.deleteById(id);
     }
 
