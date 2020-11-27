@@ -15,7 +15,7 @@ import java.util.UUID;
 @RequestMapping("/film")
 @AllArgsConstructor
 @NoArgsConstructor
-public class FilmController {
+public class FilmRestController {
 
     @Autowired
     FilmService filmsService;
