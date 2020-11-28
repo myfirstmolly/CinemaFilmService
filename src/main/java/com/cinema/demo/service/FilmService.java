@@ -9,5 +9,8 @@ public interface FilmService {
     Film addFilm(Film film);
     List<Film> getAll();
     Film getById(UUID id);
+
+    Film getByName(String name);
+
     void deleteById(UUID id);
 }

@@ -45,6 +45,13 @@ public class FilmGrpcController extends FilmServiceGrpc.FilmServiceImplBase {
     }
 
     @Override
+    public void byName(FilmByNameRequest request, StreamObserver<FilmResponse> responseObserver) {
+        Film film = filmService.getByName(request.getName());
+        responseObserver.onNext(film.toFilmResponse());
+        responseObserver.onCompleted();
+    }
+
+    @Override
     public void delete(FilmByIdRequest request, StreamObserver<DeleteFilmResponse> responseObserver) {
         filmService.deleteById(UUID.fromString(request.getId()));
         responseObserver.onNext(DeleteFilmResponse.newBuilder().build());

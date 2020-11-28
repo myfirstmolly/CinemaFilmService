@@ -7,5 +7,5 @@ import java.util.UUID;
 
 @Repository
 public interface FilmRepository extends JpaRepository<Film, UUID> {
-
+    Film findByName(String name);
 }

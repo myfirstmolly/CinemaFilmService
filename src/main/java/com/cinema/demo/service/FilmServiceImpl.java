@@ -21,6 +21,11 @@ public final class FilmServiceImpl implements FilmService {
     }
 
     @Override
+    public Film getByName(String name) {
+        return filmRepository.findByName(name);
+    }
+
+    @Override
     public List<Film> getAll() {
         return filmRepository.findAll();
     }
