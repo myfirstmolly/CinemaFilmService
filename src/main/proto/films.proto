@@ -25,11 +25,11 @@ message FilmRequest {
   Genre genre = 4;
 }
 
-message AllRequest {
+message AllFilmsRequest {
 
 }
 
-message AllResponse {
+message AllFilmsResponse {
   repeated FilmResponse films = 1;
 }
 
@@ -37,13 +37,13 @@ message FilmByIdRequest {
   string id = 1;
 }
 
-message DeleteResponse {
+message DeleteFilmResponse {
 
 }
 
 service FilmService {
-  rpc all(AllRequest) returns (AllResponse);
+  rpc all(AllFilmsRequest) returns (AllFilmsResponse);
   rpc add(FilmRequest) returns (FilmResponse);
   rpc byId(FilmByIdRequest) returns (FilmResponse);
-  rpc delete (FilmByIdRequest) returns (DeleteResponse);
+  rpc delete (FilmByIdRequest) returns (DeleteFilmResponse);
 }

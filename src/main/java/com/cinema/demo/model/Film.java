@@ -3,10 +3,7 @@ package com.cinema.demo.model;
 
 import com.cinema.demo.FilmRequest;
 import com.cinema.demo.FilmResponse;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import javax.persistence.*;
@@ -15,23 +12,25 @@ import java.util.UUID;
 @EnableAutoConfiguration
 @Entity
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public final class Film {
 
     @Id
     private final UUID filmId;
 
     @Column(unique = true)
-    private final String name;
-    private final String director;
-    private final Integer year;
-    @Enumerated(EnumType.STRING)
-    private final Genre genre;
+    private String name;
+    private String director;
+    private Integer year;
 
-    public Film(String name, String director, Integer year, Genre genre) {
+    @Enumerated(EnumType.STRING)
+    private Genre genre;
+
+    public Film() {
         this.filmId = UUID.randomUUID();
+    }
+
+    public Film(UUID filmId, String name, String director, Integer year, Genre genre) {
+        this.filmId = filmId;
         this.name = name;
         this.director = director;
         this.year = year;
@@ -39,7 +38,8 @@ public final class Film {
     }
 
     public static Film fromFilmRequest(FilmRequest filmRequest) {
-        return new Film(filmRequest.getName(),
+        return new Film(UUID.randomUUID(),
+                filmRequest.getName(),
                 filmRequest.getDirector(),
                 filmRequest.getYear(),
                 Genre.valueOf(filmRequest.getGenre().toString()));

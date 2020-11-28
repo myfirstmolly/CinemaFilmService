@@ -18,12 +18,12 @@ public class FilmGrpcController extends FilmServiceGrpc.FilmServiceImplBase {
     private FilmService filmService;
 
     @Override
-    public void all(AllRequest request, StreamObserver<AllResponse> responseObserver) {
+    public void all(AllFilmsRequest request, StreamObserver<AllFilmsResponse> responseObserver) {
         List<Film> films = filmService.getAll();
         List<FilmResponse> convertedFilms = films.stream().
                 map(Film::toFilmResponse).
                 collect(Collectors.toList());
-        AllResponse response = AllResponse.newBuilder().
+        AllFilmsResponse response = AllFilmsResponse.newBuilder().
                 addAllFilms(convertedFilms).
                 build();
         responseObserver.onNext(response);
@@ -32,8 +32,8 @@ public class FilmGrpcController extends FilmServiceGrpc.FilmServiceImplBase {
 
     @Override
     public void add(FilmRequest request, StreamObserver<FilmResponse> responseObserver) {
-        filmService.addFilm(Film.fromFilmRequest(request));
-        responseObserver.onNext(FilmResponse.newBuilder().build());
+        Film film = filmService.addFilm(Film.fromFilmRequest(request));
+        responseObserver.onNext(film.toFilmResponse());
         responseObserver.onCompleted();
     }
 
@@ -45,9 +45,9 @@ public class FilmGrpcController extends FilmServiceGrpc.FilmServiceImplBase {
     }
 
     @Override
-    public void delete(FilmByIdRequest request, StreamObserver<DeleteResponse> responseObserver) {
+    public void delete(FilmByIdRequest request, StreamObserver<DeleteFilmResponse> responseObserver) {
         filmService.deleteById(UUID.fromString(request.getId()));
-        responseObserver.onNext(DeleteResponse.newBuilder().build());
+        responseObserver.onNext(DeleteFilmResponse.newBuilder().build());
         responseObserver.onCompleted();
     }
 }
