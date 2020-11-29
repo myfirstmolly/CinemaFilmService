@@ -1,5 +1,6 @@
-package com.cinema.demo.service;
-import com.cinema.demo.model.Film;
+package com.cinema.film.service;
+
+import com.cinema.film.model.Film;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

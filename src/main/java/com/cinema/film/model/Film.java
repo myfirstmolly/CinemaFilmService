@@ -1,8 +1,8 @@
-package com.cinema.demo.model;
+package com.cinema.film.model;
 
 
-import com.cinema.demo.FilmRequest;
-import com.cinema.demo.FilmResponse;
+import com.cinema.film.FilmRequest;
+import com.cinema.film.FilmResponse;
 import lombok.Data;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
@@ -51,7 +51,7 @@ public final class Film {
                 setName(name).
                 setDirector(director).
                 setYear(year).
-                setGenre(com.cinema.demo.Genre.valueOf(genre.name())).
+                setGenre(com.cinema.film.Genre.valueOf(genre.name())).
                 build();
     }
 }

@@ -1,6 +1,6 @@
-package com.cinema.demo.service;
+package com.cinema.film.service;
 
-import com.cinema.demo.model.Film;
+import com.cinema.film.model.Film;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -41,5 +41,4 @@ public final class FilmServiceImpl implements FilmService {
         restTemplate.delete("http://cinema-seances/seance/delete-by-film/" + id.toString());
         filmRepository.deleteById(id);
     }
-
 }

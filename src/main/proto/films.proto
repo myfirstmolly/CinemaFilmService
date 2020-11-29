@@ -1,5 +1,5 @@
 syntax = "proto3";
-package com.cinema.demo;
+package com.cinema.film;
 option java_multiple_files = true;
 
 enum Genre {

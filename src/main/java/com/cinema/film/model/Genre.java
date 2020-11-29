@@ -1,4 +1,4 @@
-package com.cinema.demo.model;
+package com.cinema.film.model;
 
 public enum Genre {
     G,

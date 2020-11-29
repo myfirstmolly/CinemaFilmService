@@ -1,8 +1,8 @@
-package com.cinema.demo.api;
+package com.cinema.film.api;
 
-import com.cinema.demo.*;
-import com.cinema.demo.model.Film;
-import com.cinema.demo.service.FilmService;
+import com.cinema.film.*;
+import com.cinema.film.model.Film;
+import com.cinema.film.service.FilmService;
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
 import org.springframework.beans.factory.annotation.Autowired;
