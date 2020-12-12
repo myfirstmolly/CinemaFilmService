@@ -6,7 +6,10 @@ import com.cinema.film.FilmResponse;
 import lombok.Data;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
 import java.util.UUID;
 
 @EnableAutoConfiguration
@@ -17,7 +20,6 @@ public final class Film {
     @Id
     private final UUID filmId;
 
-    @Column(unique = true)
     private String name;
     private String director;
     private Integer year;
