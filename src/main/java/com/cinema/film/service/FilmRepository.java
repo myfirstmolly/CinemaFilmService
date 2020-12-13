@@ -7,6 +7,5 @@ import java.util.UUID;
 
 public interface FilmRepository extends JpaRepository<Film, UUID> {
     Film findByName(String name);
-
     Film findByDirector(String director);
 }
